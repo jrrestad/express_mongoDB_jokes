@@ -19,7 +19,7 @@ module.exports.createNewJoke = (req, res) => {
 }
 
 module.exports.updateJoke = (req, res) => {
-    Joke.findOneAndUpdate({_id: req.params.id}, req.body)
+    Joke.findOneAndUpdate( {_id: req.params.id}, req.body, { runValidators: true, useFindAndModify: false })
     .then(data => res.json(data))
     .catch(err => res.json(err))
 }
